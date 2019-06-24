@@ -23,6 +23,7 @@ public class Game extends Canvas implements Runnable {
 	private Handler handler;
 	private HUD hud;
 	private Menu menu;
+	private EnemyPlayer enemyPlayer;
 
 	
 
@@ -34,7 +35,8 @@ public class Game extends Canvas implements Runnable {
 	public Game() {
 
 		handler = new Handler();
-		Menu menu = new Menu("Pong", this, handler);
+		
+		Menu menu = new Menu("Pong", this, handler, enemyPlayer);
 		
 		this.addKeyListener(new KeyInput(handler));
 

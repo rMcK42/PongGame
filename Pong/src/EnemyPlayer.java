@@ -10,20 +10,32 @@ public class EnemyPlayer extends GameObject {
 
 
 	Handler handler;
+	
+	private int speed;
 
 	
+
+	public int getSpeed() {
+		return speed;
+	}
+
+	public void setSpeed(int speed) {
+		this.speed = speed;
+	}
 
 	private float scale_constant = (float) 0.03;
 	
 
-	public EnemyPlayer(float x, float y, ID id, Handler handler) {
+	public EnemyPlayer(float x, float y, ID id, Handler handler, int speed) {
 		super(x, y, id);
 		this.handler = handler;
+		this.speed = speed;
 	}
 
 	@Override
 	public void tick() {
 
+		
 		x += velX;
 		y += velY;
 		
@@ -47,10 +59,10 @@ public class EnemyPlayer extends GameObject {
 			if (tempObject.getId() == ID.Ball) {
 				
 				if(tempObject.getBounds().getCenterY() > this.y + 50 && tempObject.x > Game.WIDTH /2) {
-					this.y = this.y + 4;
+					this.y = this.y + this.speed;
 				}
 				if(tempObject.getBounds().getCenterY() < this.y + 50 && tempObject.x > Game.WIDTH /2) {
-					this.y = this.y - 4;
+					this.y = this.y - this.speed;
 				}
 			}
 		}
